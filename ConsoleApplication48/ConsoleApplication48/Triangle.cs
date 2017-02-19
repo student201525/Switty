@@ -9,7 +9,7 @@ namespace ConsoleApplication48
     class Triangle
     {
 
-        public double a;
+       // public double a;
         public readonly Points p1;
         public readonly Points p2;
         public readonly Points p3;
@@ -19,23 +19,37 @@ namespace ConsoleApplication48
 
         public Triangle(Points p1, Points p2, Points p3)
         {
-            this.p1 = p1;
-            this.p2 = p2;
-            this.p3 = p3;
+            try
+            {
+                this.p1 = p1;
+                this.p2 = p2;
+                this.p3 = p3;
 
-            AB = new Edge(p1, p2);
-            BC = new Edge(p2, p3);
-            CA = new Edge(p3, p1);
+                AB = new Edge(p1, p2);
+                BC = new Edge(p2, p3);
+                CA = new Edge(p3, p1);
+                if (!this.CheckReal)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+               // Console.WriteLine("Треугольник не существует");
+               // Console.WriteLine(e.Message);
+            }
 
+            // ae = this.GetPerimetre(); 
         }
+
+       
 
         public bool CheckReal//Существование 
         {
             get
             {
                 if (AB.lenght + BC.lenght <= CA.lenght || AB.lenght + CA.lenght <= BC.lenght || BC.lenght + CA.lenght <= AB.lenght)
-                {
-                    Console.WriteLine("Треугольник не существует");
+                {           
                     return false;
                 }
                 return true;

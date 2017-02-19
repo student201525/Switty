@@ -65,6 +65,8 @@ namespace ConsoleApplication48
                         CounterPerimetre++;
                     }
                 }
+                else
+                      Console.WriteLine("Треугольник не существует");
             }
 
             Console.WriteLine("*************************************");
